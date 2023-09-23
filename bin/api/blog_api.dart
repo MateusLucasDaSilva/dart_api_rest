@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import '../models/noticia_model.dart';
 import '../services/generic_service.dart';
 
 class BlogApi {
-  final GenericService _service;
+  final GenericService<NoticiaModel> _service;
 
   BlogApi(this._service);
 
@@ -14,17 +17,19 @@ class BlogApi {
     router.get(
       '/blog/noticias',
       (Request req) {
-        _service.findAll();
-        return Response.ok('Noticias aqui');
+        final List<NoticiaModel> noticias = _service.findAll();
+        return Response.ok(
+            jsonEncode(noticias.map((e) => e.toJson()).toList()));
       },
     );
 
     router.post(
       '/blog/noticias',
-      (Request req) {
-        // _service.save('');
+      (Request req) async {
+        var body = await req.readAsString();
+        _service.save(NoticiaModel.fromJson(body));
 
-        return Response.ok('Noticias aqui');
+        return Response(201);
       },
     );
 
