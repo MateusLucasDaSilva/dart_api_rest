@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -18,8 +16,9 @@ class BlogApi {
       '/blog/noticias',
       (Request req) {
         final List<NoticiaModel> noticias = _service.findAll();
-        return Response.ok(
-            jsonEncode(noticias.map((e) => e.toJson()).toList()));
+        final json = noticias.map((e) => e.toJson()).toList();
+
+        return Response.ok(json.toString());
       },
     );
 
@@ -27,7 +26,9 @@ class BlogApi {
       '/blog/noticias',
       (Request req) async {
         var body = await req.readAsString();
-        _service.save(NoticiaModel.fromJson(body));
+        final noticia = NoticiaModel.fromJson(body);
+
+        _service.save(noticia);
 
         return Response(201);
       },
