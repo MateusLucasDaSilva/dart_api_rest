@@ -1,3 +1,4 @@
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -13,8 +14,12 @@ class LoginApi {
 
     router.post(
       '/login',
-      (Request req) async =>
-          Response.ok(await _securityService.generateJWT('1')),
+      (Request req) async {
+        final token = await _securityService.generateJWT('1');
+        final JWT? valid = await _securityService.validateJWT(token);
+
+        return Response.ok((valid != null).toString());
+      },
     );
 
     return router;
