@@ -31,9 +31,9 @@ Certifique-se de ter o ambiente configurado com os seguintes requisitos:
 
 ## Instalação e Execução
 
-1. Clone o repositório: `git clone https://github.com/seu-usuario/api-rest-dart-shelf.git`
-2. Instale as dependências: `pub get`
-3. Execute a aplicação: `dart run bin/main.dart`
+1. Clone o repositório: `git clone https://github.com/MateusLucasDaSilva/dart_api_rest.git`
+3. Instale as dependências: `pub get`
+4. Execute a aplicação: `dart run bin/main.dart`
 
 ## Estrutura do Projeto
 
