@@ -37,3 +37,28 @@ Certifique-se de ter o ambiente configurado com os seguintes requisitos:
 
 ## Estrutura do Projeto
 
+api-rest-dart-shelf/
+|-- bin/
+| |-- main.dart
+|-- lib/
+| |-- handlers/
+| | |-- endpoint_handler.dart
+| |-- models/
+| | |-- example_model.dart
+| |-- server.dart
+|-- pubspec.yaml
+|-- README.md
+
+
+## Documentação da API
+
+Para informações detalhadas sobre os endpoints e como usar a API, consulte a [documentação da API](link-para-documentacao).
+
+## Exemplos de Uso
+
+Aqui estão alguns exemplos de como usar a API:
+
+1. **Exemplo 1:**
+   ```bash
+   curl -X GET http://localhost:8080/endpoint-1
+
