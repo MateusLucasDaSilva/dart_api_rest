@@ -4,7 +4,8 @@
     {
       "name": "main",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "program": "bin/main.dart"
     }
   ]
 }
